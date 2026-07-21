@@ -1,0 +1,6 @@
+{
+  "name": "STUDIO_X",
+  "description": "High-performance digital design agency portfolio replica featuring rich motion animations, dark/light theme toggle, interactive case studies, services, process, and contact inquiry studio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

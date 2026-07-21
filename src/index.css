@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  --bg-surface: #f7f5f2;
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-high: #eae6e1;
+  --bg-surface-highest: #ded9d2;
+  --text-primary: #050505;
+  --text-secondary: #4a4640;
+  --text-muted: #7a746a;
+  --border-color: rgba(5, 5, 5, 0.12);
+  --border-subtle: rgba(5, 5, 5, 0.06);
+  --accent: #f27d26;
+  --card-shadow: 0px 10px 40px rgba(0, 0, 0, 0.04);
+}
+
+.dark {
+  --bg-surface: #050505;
+  --bg-surface-elevated: #0a0b0e;
+  --bg-surface-high: #121318;
+  --bg-surface-highest: #1a1c24;
+  --text-primary: #e0d8d0;
+  --text-secondary: #a89f91;
+  --text-muted: #6e675d;
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --accent: #f27d26;
+  --card-shadow: 0px 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+body {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: 'Cormorant Garamond', 'Source Serif 4', Georgia, serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, nav, button, input, textarea, select, label, .font-sans {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Glass & Luxury Pill Components matching Sophisticated Dark Design */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pill {
+  border: 1px solid rgba(224, 216, 208, 0.3);
+  border-radius: 100px;
+  padding: 4px 14px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+.vertical-rail {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.accent-orange {
+  color: #f27d26;
+}
+
+.bg-accent-orange {
+  background-color: #f27d26;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f27d26;
+}
+
+
