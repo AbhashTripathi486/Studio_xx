@@ -16,6 +16,40 @@ const SUGGESTED_PROMPTS = [
   "How can I hire STUDIO_X?",
 ];
 
+const getLocalFallbackAnswer = (userText: string): string | null => {
+  const clean = userText.toLowerCase().trim().replace(/[?.!,]/g, '');
+  
+  if (clean.includes('what is studio_x') || clean.includes('what is studio x') || clean.includes('about studio_x') || clean.includes('who are you')) {
+    return "STUDIO_X is an elite, high-performance digital design & technology atelier founded in 2024. We have flagship studios in New York, London, Tokyo, and Paris, specializing in crafting bespoke digital ecosystems that combine editorial luxury aesthetics with deep technical precision.";
+  }
+  
+  if (clean.includes('core services') || clean.includes('show me services') || clean.includes('what services') || clean.includes('capabilities') || clean.includes('what do you do')) {
+    return "Our core services include:\n1. UI/UX & Design Systems (Editorial layout, motion guidelines, component libraries, accessibility compliance)\n2. Full-Stack Web Engineering (High-throughput React/TypeScript, edge deployment, <100ms response targets)\n3. Brand Strategy & Direction (Identity positioning, creative direction)\n4. Motion & Interactive Experiences (WebGL/3D shaders, fluid canvas rendering, Framer Motion choreography)";
+  }
+  
+  if (clean.includes('smylexl') || clean.includes('dental clinic website') || clean.includes('dental network')) {
+    return "SmyleXL is a modern, responsive website designed for a multi-location dental clinic network. The primary focus is to establish trust, educate patients about available treatments, and simplify appointment booking through an intuitive user experience. It features doctor profiles, a centralized clinic locator, and a conversion-oriented booking flow.";
+  }
+
+  if (clean.includes('unique wholefood') || clean.includes('organic grocery') || clean.includes('organic food')) {
+    return "Unique Wholefood is a premium e-commerce platform built for an Australian organic grocery retailer. The website enables customers to discover, purchase, and have certified organic produce, pantry essentials, wellness products, and eco-friendly goods delivered across Australia, while also supporting physical store locations.";
+  }
+
+  if (clean.includes('creative property stylist') || clean.includes('interior design') || clean.includes('home staging')) {
+    return "Creative Property Stylist is a premium business website for an Australian interior design and home staging company. The platform showcases professional property styling, interior design, and consultation services while building trust through an elegant design, portfolio galleries, testimonials, and clear calls-to-action.";
+  }
+
+  if (clean.includes('holy dental care') || clean.includes('dental clinic website')) {
+    return "Holy Dental Care is a modern healthcare website developed for a multi-specialty dental clinic in Mumbai. The platform is designed to build patient trust, showcase comprehensive dental treatments, and simplify appointment booking through a clean, informative, and user-friendly interface.";
+  }
+  
+  if (clean.includes('hire') || clean.includes('contact') || clean.includes('brief') || clean.includes('start a project') || clean.includes('proposal') || clean.includes('work with you')) {
+    return "You can start a project brief directly by clicking the 'Open Brief' link at the bottom of this chat, or by navigating to our 'Contact' section on the website. We customize high-end digital solutions tailored to your luxury brand or enterprise requirements.";
+  }
+  
+  return null;
+};
+
 interface AIChatBotProps {
   onNavigateToContact?: () => void;
 }
@@ -94,10 +128,15 @@ export const AIChatBot: React.FC<AIChatBotProps> = ({ onNavigateToContact }) => 
       setMessages((prev) => [...prev, botMsg]);
     } catch (error) {
       console.error("Failed to send chat message:", error);
+      const fallbackText = getLocalFallbackAnswer(text);
+      const textToDisplay = fallbackText 
+        ? `${fallbackText}\n\n[Note: This response is served from the local archive because the connection to the STUDIO_X core system is currently offline.]`
+        : "I am currently unable to reach the STUDIO_X core system. Please try again shortly or send a direct inquiry via our Contact section.";
+
       const errorMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'model',
-        text: "I am currently unable to reach the STUDIO_X core system. Please try again shortly or send a direct inquiry via our Contact section.",
+        text: textToDisplay,
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMsg]);
