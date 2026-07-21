@@ -67,8 +67,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ prefilledService
           <div className="pt-8 border-t border-[var(--border-color)] space-y-4">
             <div className="flex items-center gap-3 text-sm text-[var(--text-primary)] font-serif">
               <Mail className="w-4 h-4 text-[var(--text-muted)]" />
-              <a href="mailto:inquiries@studiox.design" className="hover:underline">
-                inquiries@studiox.design
+              <a href="mailto:abhashtripathi486@gmail.com" className="hover:underline">
+                abhashtripathi486@gmail.com
+              </a>
+            </div>
+            <div className="flex items-center gap-3 text-sm text-[var(--text-primary)] font-serif">
+              <Phone className="w-4 h-4 text-[var(--text-muted)]" />
+              <a href="tel:+916306271621" className="hover:underline">
+                +91 6306271621
               </a>
             </div>
             <div className="flex items-center gap-3 text-sm text-[var(--text-primary)] font-serif">
